@@ -1,0 +1,23 @@
+{
+  "name": "bitcoin-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josudoey/template-commander.git"
+  },
+  "author": "Joey Fang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josudoey/template-commander/issues"
+  },
+  "homepage": "https://github.com/josudoey/template-commander#readme",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "globby": "^6.1.0"
+  }
+}
