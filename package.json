@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require intelli-espower-loader test"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,22 @@
   },
   "homepage": "https://github.com/josudoey/template-commander#readme",
   "dependencies": {
+    "bip39": "^2.4.0",
+    "bitcoinjs-lib": "^3.2.0",
+    "co": "^4.6.0",
     "commander": "^2.11.0",
-    "globby": "^6.1.0"
+    "globby": "^6.1.0",
+    "level": "^1.7.0",
+    "pify": "^3.0.0",
+    "prompt-sync": "^4.1.5",
+    "rc": "^1.2.1",
+    "sjcl": "^1.0.7"
+  },
+  "devDependencies": {
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^4.0.1",
+    "power-assert": "^1.4.4",
+    "sinon": "^4.0.1",
+    "tmp": "0.0.33"
   }
 }

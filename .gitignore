@@ -1,4 +1,6 @@
 *~
 *.swp
 *.swo
+.bwrc
+.wallet*
 node_modules/
