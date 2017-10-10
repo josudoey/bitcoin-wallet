@@ -17,16 +17,23 @@
   },
   "homepage": "https://github.com/josudoey/template-commander#readme",
   "dependencies": {
+    "bignumber.js": "^4.1.0",
     "bip39": "^2.4.0",
     "bitcoinjs-lib": "^3.2.0",
+    "bitcore-lib": "^0.14.0",
+    "bitcore-p2p": "^1.1.2",
     "co": "^4.6.0",
     "commander": "^2.11.0",
     "globby": "^6.1.0",
     "level": "^1.7.0",
+    "merge": "^1.2.0",
     "pify": "^3.0.0",
     "prompt-sync": "^4.1.5",
     "rc": "^1.2.1",
-    "sjcl": "^1.0.7"
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "sjcl": "^1.0.7",
+    "url-template": "^2.0.8"
   },
   "devDependencies": {
     "intelli-espower-loader": "^1.0.1",
