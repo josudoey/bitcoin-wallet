@@ -2,5 +2,6 @@
 *.swp
 *.swo
 .bwrc
-wallet*
+.jbwrc
+jbw*
 node_modules/
