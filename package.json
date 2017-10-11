@@ -1,7 +1,7 @@
 {
   "name": "bitcoin-wallet",
   "version": "1.0.0",
-  "description": "",
+  "description": "provide a bitcoin wallet",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require intelli-espower-loader test"
