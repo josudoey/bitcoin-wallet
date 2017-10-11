@@ -1,5 +1,5 @@
 {
-  "name": "@josudoey/bw",
+  "name": "jbw",
   "version": "1.0.0",
   "description": "provide a bitcoin wallet",
   "main": "index.js",
@@ -43,6 +43,6 @@
     "tmp": "0.0.33"
   },
   "bin": {
-    "bw": "./index.js"
+    "jbw": "./index.js"
   }
 }
