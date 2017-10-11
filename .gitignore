@@ -2,5 +2,5 @@
 *.swp
 *.swo
 .bwrc
-.wallet*
+wallet*
 node_modules/

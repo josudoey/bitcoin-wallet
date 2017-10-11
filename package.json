@@ -41,5 +41,8 @@
     "power-assert": "^1.4.4",
     "sinon": "^4.0.1",
     "tmp": "0.0.33"
+  },
+  "bin": {
+    "bw": "./index.js"
   }
 }
