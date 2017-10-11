@@ -66,23 +66,32 @@ module.exports = function (prog) {
     .action(function (address, opts) {
       //TODO
       const wallet = new Wallet()
-      const show = function (address) {
-        const unit = (opts.satoshi) ? 'satoshi' : 'BTC'
-        wallet.balanceOf(address).then(function (balance) {
+      const balanceOf = function (address) {
+        return wallet.balanceOf(address).then(function (balance) {
           let n = balance
           if (!opts.satoshi) {
             n = Wallet.toBTC(balance)
           }
           console.log(address + ' ' + n + ' ' + unit)
+          return Promise.resolve(balance)
         })
       }
       if (address) {
-        show(address)
+        balanceOf(address)
         return
       }
+      let total = 0
+      const unit = (opts.satoshi) ? 'satoshi' : 'BTC'
       wallet.store.walk('/', function* (item) {
         const address = item.value.address
-        show(address)
+        const balance = yield balanceOf(address)
+        total += balance
+      }).then(function () {
+        let n = total
+        if (!opts.satoshi) {
+          n = Wallet.toBTC(n)
+        }
+        console.log('total balance: ' + n + ' ' + unit)
       })
     })
 
