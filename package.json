@@ -1,5 +1,5 @@
 {
-  "name": "bitcoin-wallet",
+  "name": "@josudoey/bw",
   "version": "1.0.0",
   "description": "provide a bitcoin wallet",
   "main": "index.js",
