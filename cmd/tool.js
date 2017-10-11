@@ -124,12 +124,14 @@ module.exports = function (prog) {
 
   prog
     .command('transfer')
+    .option('--limit <fee>', 'set fee limit', '0')
     .description('transfer bitcoin')
     .action(co.wrap(function* (opts) {
       const prompt = require('prompt-sync')({
         sigint: true
       })
       const outputs = []
+      const feeLimit = Wallet.toSatoshi(opts.limit)
       while (true) {
         const address = prompt('transfer address[empty]: ')
         if (!address) {
@@ -152,7 +154,8 @@ module.exports = function (prog) {
       }
 
       const wallet = new Wallet()
-      const result = yield wallet.take(outputs)
+      console.log(feeLimit)
+      const result = yield wallet.take(outputs, feeLimit)
       const utxo = result.utxo
       console.log()
       console.log(`=====input=====`)
