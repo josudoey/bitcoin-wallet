@@ -10,14 +10,14 @@ module.exports = function (prog) {
 
   prog
     .command('init')
-    .description('init wallet')
+    .description('init wallet secret')
     .action(function (opts) {
-      new Wallet().initNode()
+      new Wallet().initSeed()
     })
 
   prog
     .command('node')
-    .description('show node')
+    .description('show wallet node m/44\'/0\'/0\' bip32 pubkey')
     .action(function (opts) {
       new Wallet().initNode().then(function (node) {
         console.log(node.toBase58())
@@ -25,8 +25,15 @@ module.exports = function (prog) {
     })
 
   prog
+    .command('seed')
+    .description('show wallet seed mnemonic')
+    .action(function (opts) {
+      new Wallet().showSeed()
+    })
+
+  prog
     .command('create')
-    .description('create address')
+    .description('create wallet address')
     .action(function (opts) {
       const wallet = new Wallet()
       wallet.initNode().then(function (node) {
@@ -38,7 +45,7 @@ module.exports = function (prog) {
 
   prog
     .command('dump')
-    .description('dump store')
+    .description('dump store data')
     .action(function (opts) {
       const wallet = new Wallet()
       const s = wallet.store.createReadStream({
@@ -61,10 +68,9 @@ module.exports = function (prog) {
 
   prog
     .command('balance [address]')
-    .option('--satoshi', 'show satoshi', false)
+    .option('--satoshi', 'satoshi unit display', false)
     .description('show balance satoshi')
     .action(function (address, opts) {
-      //TODO
       const wallet = new Wallet()
       const balanceOf = function (address) {
         return wallet.balanceOf(address).then(function (balance) {
@@ -99,12 +105,13 @@ module.exports = function (prog) {
     .command('passwd')
     .description('change wallet password')
     .action(function (opts) {
-      //TODO
+      const wallet = new Wallet()
+      wallet.changePassword()
     })
 
   prog
     .command('clear')
-    .description('clear utxo')
+    .description('clear store for utxo')
     .action(function (opts) {
       const wallet = new Wallet()
       wallet.clear()
@@ -112,7 +119,7 @@ module.exports = function (prog) {
 
   prog
     .command('pull [address]')
-    .description('pull utxo')
+    .description('pull utxo from remote service')
     .action(function (address, opts) {
       const wallet = new Wallet()
       if (address) {
@@ -219,41 +226,12 @@ module.exports = function (prog) {
 
   prog
     .command('fee')
-    .description('show fee per kb')
+    .description('show estimate fee per kb')
     .action(function (opts) {
       const network = require('../lib/config').network
       const blocktrail = require('../lib/blocktrail')
       console.log(`network: ${network}`)
       blocktrail.feePerKB().then(console.log)
     })
-
-  prog
-    .command('estimate-rate')
-    .description('calc estimate tx size function')
-    .action(function (opts) {
-      console.log('txSize = base + inputRate * inputCount + outputRate * outputCount')
-      let baseMax = 0
-      let inputRateMax = 0
-      let outputRateMax = 0
-      for (let i = 0; i < 10; i++) {
-        const tb = Wallet.getSizeTable()
-        const base = tb[2][1] + tb[1][2] - tb[3][3]
-        const inputRate = tb[2][1] - tb[1][1]
-        const outputRate = tb[1][2] - tb[1][1]
-        const base2 = tb[2][2] + tb[1][1] - tb[3][3]
-        const inputRate2 = tb[3][2] - tb[2][2]
-        const outputRate2 = tb[2][3] - tb[2][2]
-        baseMax = (base > baseMax) ? base : baseMax
-        baseMax = (base2 > baseMax) ? base2 : baseMax
-        inputRateMax = (inputRate > inputRateMax) ? inputRate : inputRateMax
-        inputRateMax = (inputRate2 > inputRateMax) ? inputRate2 : inputRateMax
-        outputRateMax = (outputRate > outputRateMax) ? outputRate : outputRateMax
-        outputRateMax = (outputRate2 > outputRateMax) ? outputRate2 : outputRateMax
-      }
-      console.log(`base: ${baseMax}`)
-      console.log(`inputRate: ${inputRateMax}`)
-      console.log(`outputRate: ${outputRateMax}`)
-    })
-
 }
 
