@@ -2,17 +2,17 @@ exports = module.exports = function (env, currency) {
   let Transaction, Script, Address, PublicKeyHash
 
   if (currency === 'btc') {
-    Transaction = require('bitcore-lib/lib/transaction')
     PublicKeyHash = require('bitcore-lib/lib/transaction/input/publickeyhash')
-    Script = require('bitcore-lib/lib/script')
     Address = require('bitcore-lib/lib/address')
+    Script = require('bitcore-lib/lib/script')
+    Transaction = require('bitcore-lib/lib/transaction')
   }
 
   if (currency === 'bch') {
-    Transaction = require('bitcore-lib-cash/lib/transaction')
     PublicKeyHash = require('bitcore-lib-cash/lib/transaction/input/publickeyhash')
-    Script = require('bitcore-lib-cash/lib/script')
     Address = require('bitcore-lib-cash/lib/address')
+    Script = require('bitcore-lib-cash/lib/script')
+    Transaction = require('bitcore-lib-cash/lib/transaction')
   }
 
   if (!Transaction) {
