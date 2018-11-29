@@ -4,7 +4,10 @@
   "description": "provide a bitcoin wallet",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require intelli-espower-loader test"
+    "test": "mocha --require intelli-espower-loader",
+    "dev:test": "nodemon --ext js --exec 'mocha $@'",
+    "cover": "istanbul cover _mocha --hook-run-in-context --print both",
+    "dev:cover": "nodemon --ext js --exec 'istanbul cover _mocha --hook-run-in-context --print both'"
   },
   "repository": {
     "type": "git",
@@ -17,29 +20,31 @@
   },
   "homepage": "https://github.com/josudoey/template-commander#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bignumber.js": "^4.1.0",
     "bip39": "^2.4.0",
-    "bitcoinjs-lib": "^3.2.0",
-    "bitcore-lib": "^0.14.0",
+    "bitcore-lib": "^5.0.0-beta.1",
     "bitcore-p2p": "^1.1.2",
+    "bitcore-p2p-cash": "^1.2.1",
     "co": "^4.6.0",
-    "commander": "^2.11.0",
+    "commander": "^2.17.1",
+    "dot-prop": "^4.2.0",
     "globby": "^6.1.0",
-    "level": "^1.7.0",
+    "level": "^4.0.0",
     "merge": "^1.2.0",
     "pify": "^3.0.0",
     "prompt-sync": "^4.1.5",
-    "rc": "^1.2.1",
-    "request": "^2.83.0",
+    "rc": "^1.2.8",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "sjcl": "^1.0.7",
     "url-template": "^2.0.8"
   },
   "devDependencies": {
     "intelli-espower-loader": "^1.0.1",
-    "mocha": "^4.0.1",
-    "power-assert": "^1.4.4",
-    "sinon": "^4.0.1",
+    "istanbul": "^1.1.0-alpha.1",
+    "power-assert": "^1.6.0",
+    "sinon": "^4.5.0",
     "tmp": "0.0.33"
   },
   "bin": {
