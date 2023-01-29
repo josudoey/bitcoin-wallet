@@ -1,6 +1,6 @@
 {
   "name": "jbw",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "provide a bitcoin wallet",
   "main": "index.js",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/josudoey/template-commander.git"
+    "url": "git+https://github.com/josudoey/bitcoin-wallet.git"
   },
   "author": "Joey Fang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/josudoey/template-commander/issues"
+    "url": "https://github.com/josudoey/bitcoin-wallet/issues"
   },
-  "homepage": "https://github.com/josudoey/template-commander#readme",
+  "homepage": "https://github.com/josudoey/bitcoin-wallet#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "bignumber.js": "^4.1.0",
